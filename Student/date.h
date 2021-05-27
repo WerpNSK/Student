@@ -20,8 +20,12 @@ public:
 		this->month = 0;
 		this->year = 0;
 	}
-	date(date&& d) {}
-	date& operator=(date&& d) {
+	date(date&& d) {
+		this->day = d.day;
+		this->month = d.month;
+		this->year = d.year;
+	}
+	date& operator=(const date&& d) {
 		if (this == &d)
 			return *this;
 		this->day = d.day;
@@ -29,14 +33,6 @@ public:
 		this->year = d.year;
 		return *this;
 	}
-	date operator+=(int d) {
-		this->day = this->day + d;
-		if (this->day > 30) {}
-
-	}
-	date operator+=(const date& d) {}
-	date operator-=(int d) {}
-	date operator-=(const date& d) {}
 
 	void inputDate() {
 		cout << "Day: ";
